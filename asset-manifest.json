@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Kaydeal-frontend/static/css/main.f3e66055.chunk.css",
+    "main.js": "/Kaydeal-frontend/static/js/main.42374e04.chunk.js",
+    "main.js.map": "/Kaydeal-frontend/static/js/main.42374e04.chunk.js.map",
+    "runtime-main.js": "/Kaydeal-frontend/static/js/runtime-main.eb227faa.js",
+    "runtime-main.js.map": "/Kaydeal-frontend/static/js/runtime-main.eb227faa.js.map",
+    "static/js/2.e868de5c.chunk.js": "/Kaydeal-frontend/static/js/2.e868de5c.chunk.js",
+    "static/js/2.e868de5c.chunk.js.map": "/Kaydeal-frontend/static/js/2.e868de5c.chunk.js.map",
+    "index.html": "/Kaydeal-frontend/index.html",
+    "precache-manifest.b95082680eace263a3dc9a707671feb7.js": "/Kaydeal-frontend/precache-manifest.b95082680eace263a3dc9a707671feb7.js",
+    "service-worker.js": "/Kaydeal-frontend/service-worker.js",
+    "static/css/main.f3e66055.chunk.css.map": "/Kaydeal-frontend/static/css/main.f3e66055.chunk.css.map",
+    "static/js/2.e868de5c.chunk.js.LICENSE": "/Kaydeal-frontend/static/js/2.e868de5c.chunk.js.LICENSE",
+    "static/media/style.css": "/Kaydeal-frontend/static/media/classic-blue-coupe-die-cast-model-1037995.69cfda92.jpg",
+    "static/media/logo.svg": "/Kaydeal-frontend/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.eb227faa.js",
+    "static/js/2.e868de5c.chunk.js",
+    "static/css/main.f3e66055.chunk.css",
+    "static/js/main.42374e04.chunk.js"
+  ]
+}
