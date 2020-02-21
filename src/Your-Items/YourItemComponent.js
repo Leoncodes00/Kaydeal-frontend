@@ -11,36 +11,40 @@ class YourItemComponent extends React.Component {
   constructor(props) {
     super(props);
   }
-
-  mapData = () => {
-    return this.props.user.map(info => {
-      return (
-        <div className="card">
-          <a href={info.image} target="_blank" alt="Image Link">
-            Image Link
-          </a>
-          <div className="card-container">
-            <h4>
-              <b>Name: {info.name}</b>
-            </h4>
-            <p>Price: {info.price}</p>
-            {localStorage.getItem("userId") === info.user_id.toString() ? (
+  deleteItem = () => {
+    fetch(`http://localhost:3000/items/${this.props.info.id}`, {
+      method: "DELETE"
+    });
+  };
+  render() {
+    return (
+      <div className="card">
+        <a href={this.props.info.image} target="_blank" alt="Image Link">
+          Image Link
+        </a>
+        <div className="card-container">
+          <h4>
+            <b>Name: {this.props.info.name}</b>
+          </h4>
+          <p>Price: {this.props.info.price}</p>
+          {localStorage.getItem("userId") ===
+          this.props.info.user_id.toString() ? (
+            <div>
               <button onClick={() => this.props.history.push("/edit-item")}>
                 Edit item
               </button>
-            ) : (
-              <button onClick={() => this.setUpMessageSeller(info.user_id)}>
-                Message seller
-              </button>
-            )}
-          </div>
+              <button onClick={() => this.deleteItem()}>Delete</button>
+            </div>
+          ) : (
+            <button
+              onClick={() => this.setUpMessageSeller(this.props.info.user_id)}
+            >
+              Message seller
+            </button>
+          )}
         </div>
-      );
-    });
-  };
-
-  render() {
-    return <div>{this.mapData()}</div>;
+      </div>
+    );
   }
 }
 

@@ -14,8 +14,8 @@ class ItemComponent extends React.Component {
   }
 
   setUpMessageSeller = userId => {
-    this.props.getItemId(userId);
     this.props.history.push("/message-seller");
+    this.props.getUserId(userId);
   };
 
   setUpEditItem = id => {

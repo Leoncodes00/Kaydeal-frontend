@@ -8,8 +8,6 @@ export class YourItems extends Component {
     this.state = {
       user: []
     };
-  }
-  fetchUserData = () => {
     fetch(`http://localhost:3000/users/${localStorage.getItem("userId")}`)
       .then(resp => resp.json())
       .then(data =>
@@ -17,19 +15,20 @@ export class YourItems extends Component {
           user: data.items
         })
       );
-  };
+  }
 
   renderUser = () => {
-    return <YourItemComponent user={this.state.user} />;
+    return this.state.user.map(info => {
+      return (
+        <div>
+          <YourItemComponent info={info} />
+        </div>
+      );
+    });
   };
 
   render() {
-    return (
-      <div>
-        {this.fetchUserData()}
-        {this.renderUser()}
-      </div>
-    );
+    return <div>{this.renderUser()}</div>;
   }
 }
 

@@ -49,7 +49,8 @@ export class SellForm extends Component {
 
   render() {
     return (
-      <div className="form-container">
+      <div className="form-style-6">
+        <h1>Sell Item</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
             Image link:

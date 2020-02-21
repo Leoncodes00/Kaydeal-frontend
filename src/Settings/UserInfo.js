@@ -1,12 +1,26 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from "react-router-dom";
+import "./UserInfoPage.css";
 
-const UserInfo = props => {
-  return (
-    <div>
-      <h1>Name: {props.user.name}</h1>
-      <h1>Email: {props.user.email}</h1>
-      <h2>Messages: {props.user.messages}</h2>
-    </div>
-  );
-};
-export default UserInfo;
+class UserInfo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="user-info-container">
+        <p>Username: {this.props.user.name}</p>
+        <p>Email: {this.props.user.email}</p>
+      </div>
+    );
+  }
+}
+export default withRouter(UserInfo);

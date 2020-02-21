@@ -61,7 +61,8 @@ export class EditItems extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="form-style-6" onSubmit={this.handleSubmit}>
+          <h1>Edit Item</h1>
           <label>
             Image Link:
             <input

@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
   Link,
+  Redirect,
   withRouter
 } from "react-router-dom";
 import Homepage from "./Home/Homepage";
@@ -16,6 +17,8 @@ import Settings from "./Settings/Settings";
 import MessageSeller from "./MessageSeller/MessageSeller";
 import YourItems from "./Your-Items/YourItems";
 import EditItems from "./Edit/EditItems";
+import MessageBuyer from "./MessageSeller/MessageBuyer";
+import UserInfoEdit from "./Settings/UserInfoEdit";
 
 class App extends React.Component {
   constructor(props) {
@@ -27,7 +30,8 @@ class App extends React.Component {
       username: "",
       userId: "",
       thisUserId: "",
-      thisItemId: ""
+      thisItemId: "",
+      thisBuyerId: ""
     };
   }
   componentDidMount() {
@@ -51,7 +55,8 @@ class App extends React.Component {
     this.setState(
       {
         isLoggedIn: !this.state.isLoggedIn,
-        userId: userData.id
+        userId: userData.id,
+        username: userData.name
       },
       () => this.setLocalStorage(userData.id)
     );
@@ -60,9 +65,10 @@ class App extends React.Component {
   setLocalStorage = id => {
     localStorage.setItem("isLoggedIn", "true");
     localStorage.setItem("userId", id);
+    localStorage.setItem("username", this.state.username);
   };
 
-  getItemId = userId => {
+  getUserId = userId => {
     this.setState({
       thisUserId: userId
     });
@@ -71,6 +77,12 @@ class App extends React.Component {
   itemIdForEdit = id => {
     this.setState({
       thisItemId: id
+    });
+  };
+
+  getUserSeller = buyerId => {
+    this.setState({
+      thisBuyerId: buyerId
     });
   };
 
@@ -130,7 +142,7 @@ class App extends React.Component {
                 <Homepage
                   {...props}
                   itemIdForEdit={this.itemIdForEdit}
-                  getItemId={this.getItemId}
+                  getUserId={this.getUserId}
                   items={this.state.items}
                 />
               )}
@@ -159,14 +171,20 @@ class App extends React.Component {
               exact
               path="/settings"
               render={props => (
-                <Settings {...props} userId={this.state.userId} />
+                <Settings
+                  {...props}
+                  username={this.state.username}
+                  userId={this.state.userId}
+                  isLoggedIn={this.state.isLoggedIn}
+                  getUserSeller={this.getUserSeller}
+                />
               )}
             />
             <Route
               exact
               path="/message-seller"
               render={props => (
-                <MessageSeller {...props} thisUserId={this.state.thisItemId} />
+                <MessageSeller {...props} thisUserId={this.state.thisUserId} />
               )}
             />
             <Route
@@ -180,6 +198,18 @@ class App extends React.Component {
               render={props => (
                 <EditItems {...props} thisItemId={this.state.thisItemId} />
               )}
+            />
+            <Route
+              exact
+              path="/message-buyer"
+              render={props => (
+                <MessageBuyer {...props} thisBuyerId={this.state.thisBuyerId} />
+              )}
+            />
+            <Route
+              exact
+              path="/edit-user"
+              render={props => <UserInfoEdit {...props} />}
             />
           </Router>
         </header>

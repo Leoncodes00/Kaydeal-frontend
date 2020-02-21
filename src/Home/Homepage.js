@@ -10,7 +10,7 @@ export class Homepage extends Component {
       <ItemComponent
         item={item}
         itemIdForEdit={this.props.itemIdForEdit}
-        getItemId={this.props.getItemId}
+        getUserId={this.props.getUserId}
       />
     ));
   };

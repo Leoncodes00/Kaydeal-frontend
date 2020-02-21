@@ -32,19 +32,22 @@ export class MessageSeller extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log("bruh");
     fetch(`http://localhost:3000/messages`, {
       headers: { "Content-Type": "application/json; charset=utf-8" },
       method: "POST",
       body: JSON.stringify({
-        user_id: localStorage.getItem("userId"),
-        messages: `Buyer - name: ${this.state.name}, phone: ${this.state.phone}, message: ${this.state.message}`
+        user_id: this.props.thisUserId,
+        buyer_id: localStorage.getItem("userId"),
+        content: `Name: ${this.state.name} Phone#: ${this.state.phone} Message: ${this.state.message}`
       })
     });
   };
 
   render() {
     return (
-      <div>
+      <div className="form-style-6">
+        <h1>Contact Seller</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:

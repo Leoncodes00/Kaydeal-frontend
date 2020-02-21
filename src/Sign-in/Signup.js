@@ -46,7 +46,6 @@ export class Signup extends Component {
         this.props.setLoggedIn(json);
       })
     );
-    this.props.history.push("/");
   };
   render() {
     return (
